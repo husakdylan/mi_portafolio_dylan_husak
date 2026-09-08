@@ -19,7 +19,7 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en el menú */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -42,13 +42,13 @@ nav {
     backdrop-filter: blur(8px);
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
-    padding: 12px 20px;
+    padding: 15px 20px;
 }
 
 nav ul {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 30px;
     list-style: none;
 }
 
@@ -123,7 +123,7 @@ section h2 {
 }
 
 /* ==========================================
-   5. GRILLA DE PROYECTOS RESPONSIVE (Auto-fit Grid)
+   5. GRILLA DE PROYECTOS RESPONSIVE
    ========================================== */
 #portfolio p {
     color: var(--text-secondary);
@@ -132,7 +132,6 @@ section h2 {
 
 .proyectos-grid {
     display: grid;
-    /* magia responsive: las columnas se adaptan solas según el ancho disponible */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
@@ -196,7 +195,6 @@ section h2 {
     gap: 10px;
 }
 
-/* Botones de tarjetas */
 .btn-link {
     flex: 1;
     text-align: center;
@@ -291,19 +289,104 @@ section h2 {
 }
 
 /* ==========================================
-   7. FOOTER
+   7. FOOTER CON ÍCONOS Y ESTILOS SOCIALES
    ========================================== */
 footer {
-    text-align: center;
-    padding: 30px 20px;
     background-color: #0a0f1d;
     border-top: 1px solid var(--border-color);
     color: var(--text-secondary);
+    padding: 40px 20px 20px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-info h3 {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+}
+
+.footer-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.footer-info p i {
+    color: var(--accent);
+    margin-right: 5px;
+}
+
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.footer-social h4 {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Efectos al pasar el cursor sobre los íconos del footer */
+.social-links a:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+}
+
+.social-links a:hover .fa-linkedin {
+    color: #0a66c2;
+}
+
+.social-links a:hover .fa-github {
+    color: #ffffff;
+}
+
+.social-links a:hover .fa-envelope {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
     font-size: 0.85rem;
+    color: var(--text-secondary);
 }
 
 /* ==========================================
-   8. MEDIA QUERIES (Ajustes para Pantallas Chicas)
+   8. MEDIA QUERIES (Soporte Móvil)
    ========================================== */
 @media (max-width: 600px) {
     header h1 {
@@ -328,6 +411,16 @@ footer {
     }
 
     .proyectos-grid {
-        grid-template-columns: 1fr; /* Una sola columna en celulares */
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-social {
+        align-items: center;
     }
 }
