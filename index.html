@@ -8,21 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-
-    <!-- BARRA DE NAVEGACIÓN: Para ir saltando de sección sin dar vueltas -->
+    <!-- BARRA DE NAVEGACIÓN FLOTANTE (Estilo Cápsula) -->
     <nav>
-        <ul>
-            <li><a href="#about_us">Acerca de mí</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Dylan Husak</a>
+
+            <ul class="nav-links">
+                <li class="nav-item"><a href="#about_us">Acerca de mí</a></li>
+                <li class="nav-item"><a href="#portfolio">Portfolio</a></li>
+                <li class="nav-item"><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- CABECERA: La carta de presentación con tu foto de perfil -->
     <header>
-        <h1>Dylan Husak</h1>
-        <!-- Ojo con la ruta de la foto si la descargás a tu compu -->
+        <!-- Foto de perfil-->
         <img src="foto_perfil.jpg" alt="Foto de Dylan Husak" id="perfil">
+        <h1>Dylan Husak</h1>
     </header>
 
     <!-- CONTENEDOR PRINCIPAL: Mete todo el contenido al centro -->
