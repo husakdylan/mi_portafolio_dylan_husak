@@ -1,24 +1,35 @@
-/* Importación de Fuentes */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
-
-/* Variables Globales */
+/* ==========================================================================
+   1. VARIABLES CSS (CUSTOM PROPERTIES)
+   ========================================================================== */
 :root {
+    /* Paleta - Modo Oscuro & Acentos */
     --bg-dark: #0b0e19;
     --bg-card: #10131e;
     --bg-terminal: #05070e;
     --border-color: rgba(255, 255, 255, 0.1);
+    
     --text-main: #f1f5f9;
     --text-muted: #94a3b8;
+    
     --cyan: #00f2fe;
     --purple: #7928ca;
     --green: #4ade80;
     --red: #ef4444;
-    --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+    /* Tipografías */
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
+
+    /* Transición global rápida */
+    --transition-standard: ease 0.2s;
 }
 
-/* Reset y Base */
-* {
+/* ==========================================================================
+   2. RESET Y BASE (LOW SPECIFICITY & BOX-SIZING)
+   ========================================================================== */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -41,6 +52,11 @@ body {
     overflow-x: hidden;
 }
 
+img, picture, svg {
+    display: block;
+    max-width: 100%;
+}
+
 section[id] {
     scroll-margin-top: 6rem;
 }
@@ -50,7 +66,9 @@ section[id] {
     100% { background-position: 500px 500px; }
 }
 
-/* Utilidades y Texto */
+/* ==========================================================================
+   3. UTILIDADES Y TEXTO
+   ========================================================================== */
 .gradient-text {
     background: linear-gradient(135deg, var(--cyan), var(--purple));
     -webkit-background-clip: text;
@@ -71,7 +89,9 @@ section[id] {
     gap: 6rem;
 }
 
-/* Navbar */
+/* ==========================================================================
+   4. NAVBAR
+   ========================================================================== */
 .header {
     position: fixed;
     top: 1rem;
@@ -101,7 +121,7 @@ section[id] {
     font-family: var(--font-mono);
     font-weight: 700;
     text-decoration: none;
-    transition: transform 0.3s;
+    transition: var(--transition-standard);
 }
 
 .logo-img {
@@ -111,7 +131,8 @@ section[id] {
     filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.3));
 }
 
-.logo:hover {
+.logo:hover,
+.logo:focus-visible {
     transform: scale(1.08);
 }
 
@@ -126,10 +147,11 @@ section[id] {
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
-    transition: color 0.2s;
+    transition: var(--transition-standard);
 }
 
 .nav-links a:hover,
+.nav-links a:focus-visible,
 .nav-links a.active-link {
     color: var(--cyan);
 }
@@ -138,12 +160,17 @@ section[id] {
     font-weight: 700;
 }
 
-/* Botones Base */
-.btn-cv, .btn-primary, .btn-secondary, .btn-submit {
+/* ==========================================================================
+   5. BOTONES Y ACCIONES
+   ========================================================================== */
+.btn-cv,
+.btn-primary,
+.btn-secondary,
+.btn-submit {
     font-weight: 600;
     border-radius: 0.5rem;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: var(--transition-standard);
     cursor: pointer;
     text-align: center;
 }
@@ -156,17 +183,22 @@ section[id] {
     color: var(--cyan);
 }
 
-.btn-cv:hover {
+.btn-cv:hover,
+.btn-cv:focus-visible {
     background-color: rgba(0, 242, 254, 0.1);
     box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
 }
 
-.btn-primary, .btn-submit {
+.btn-primary,
+.btn-submit {
     background-color: var(--cyan);
     color: var(--bg-dark);
 }
 
-.btn-primary:hover, .btn-submit:hover {
+.btn-primary:hover,
+.btn-primary:focus-visible,
+.btn-submit:hover,
+.btn-submit:focus-visible {
     opacity: 0.9;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
@@ -177,12 +209,15 @@ section[id] {
     color: var(--text-main);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
     background-color: rgba(255, 255, 255, 0.05);
     transform: translateY(-2px);
 }
 
-/* Hero Section */
+/* ==========================================================================
+   6. HERO SECTION
+   ========================================================================== */
 .hero {
     display: flex;
     flex-direction: column-reverse;
@@ -227,8 +262,14 @@ section[id] {
 }
 
 @keyframes pulse-dot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.3); }
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.3);
+    }
 }
 
 .subtitle {
@@ -237,7 +278,7 @@ section[id] {
     max-width: 32rem;
 }
 
-/* Foto de Perfil */
+/* Profile Picture */
 .profile-container {
     position: relative;
     display: flex;
@@ -263,9 +304,8 @@ section[id] {
     height: auto;
     object-fit: contain;
     z-index: 2;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6)) 
-            drop-shadow(0 0 15px rgba(0, 242, 254, 0.2));
-    transition: transform 0.3s ease;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 15px rgba(0, 242, 254, 0.2));
+    transition: var(--transition-standard);
 }
 
 #perfil:hover {
@@ -277,7 +317,9 @@ section[id] {
     50% { transform: translateY(-12px); }
 }
 
-/* About & Tech Stack Card */
+/* ==========================================================================
+   7. ABOUT & TECH STACK
+   ========================================================================== */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -285,16 +327,17 @@ section[id] {
     align-items: center;
 }
 
-.about-info h2, .section h2 {
+.about-info h2,
+.section h2 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
 }
 
-.about-info p, .section-desc {
+.about-info p,
+.section-desc {
     color: var(--text-muted);
 }
 
-/* Estilos de la Tarjeta de Stack Tecnológico */
 .tech-stack-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -329,7 +372,7 @@ section[id] {
     background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
     border-radius: 0.75rem;
-    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    transition: var(--transition-standard);
 }
 
 .tech-item i {
@@ -352,16 +395,18 @@ section[id] {
     color: var(--text-main);
 }
 
-/* Colores de íconos */
+/* Tech Icon Colors */
 .icon-tailwind i { color: #06b6d4; }
-.icon-ts i       { color: #3178c6; }
-.icon-js i       { color: #f7df1e; }
-.icon-html i     { color: #e34f26; }
-.icon-css i      { color: #1572b6; }
-.icon-gh i      { color: #ffff; }
-.icon-git i      { color: #c6411d; }
+.icon-ts i { color: #3178c6; }
+.icon-js i { color: #f7df1e; }
+.icon-html i { color: #e34f26; }
+.icon-css i { color: #1572b6; }
+.icon-gh i { color: #ffffff; }
+.icon-git i { color: #c6411d; }
 
-/* Proyectos */
+/* ==========================================================================
+   8. PROJECTS
+   ========================================================================== */
 .section-desc {
     margin-bottom: 2rem;
 }
@@ -379,7 +424,7 @@ section[id] {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: var(--transition-standard);
 }
 
 .project-card:hover {
@@ -400,7 +445,7 @@ section[id] {
     height: 100%;
     object-fit: cover;
     opacity: 0.8;
-    transition: transform 0.4s ease, opacity 0.4s ease;
+    transition: var(--transition-standard);
 }
 
 .project-card:hover .project-image img {
@@ -446,13 +491,16 @@ section[id] {
     gap: 0.75rem;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     flex: 1;
     padding: 0.5rem;
     font-size: 0.85rem;
 }
 
-/* Contacto y Formulario */
+/* ==========================================================================
+   9. CONTACT FORM
+   ========================================================================== */
 .contact-card {
     padding: 2.5rem;
     border-radius: 1rem;
@@ -501,7 +549,7 @@ section[id] {
     color: var(--text-main);
     font-family: var(--font-sans);
     font-size: 0.875rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: var(--transition-standard);
 }
 
 .form-group input:focus,
@@ -525,7 +573,9 @@ section[id] {
     font-family: var(--font-mono);
 }
 
-/* Footer */
+/* ==========================================================================
+   10. FOOTER
+   ========================================================================== */
 .footer {
     border-top: 1px solid var(--border-color);
     background-color: var(--bg-terminal);
@@ -548,7 +598,8 @@ section[id] {
     font-size: 1.125rem;
 }
 
-.footer-info p, .footer-social h4 {
+.footer-info p,
+.footer-social h4 {
     color: var(--text-muted);
     font-size: 0.875rem;
 }
@@ -567,10 +618,11 @@ section[id] {
 .social-links a {
     color: var(--text-muted);
     font-size: 1.25rem;
-    transition: color 0.2s, transform 0.2s;
+    transition: var(--transition-standard);
 }
 
-.social-links a:hover {
+.social-links a:hover,
+.social-links a:focus-visible {
     color: var(--cyan);
     transform: translateY(-3px);
 }
@@ -583,39 +635,41 @@ section[id] {
     font-size: 0.75rem;
 }
 
-/* Media Queries Responsivas */
+/* ==========================================================================
+   11. MEDIA QUERIES (MOBILE-FIRST)
+   ========================================================================== */
 @media (min-width: 640px) {
-    .hero-content h1 { 
-        font-size: 3.5rem; 
+    .hero-content h1 {
+        font-size: 3.5rem;
     }
-    
-    .projects-grid { 
-        grid-template-columns: repeat(2, 1fr); 
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 768px) {
-    .hero { 
-        flex-direction: row; 
+    .hero {
+        flex-direction: row;
     }
-    
-    .about-grid { 
-        grid-template-columns: 1fr 1fr; 
+
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
     }
-    
-    #perfil { 
-        width: 340px; 
+
+    #perfil {
+        width: 340px;
     }
-    
-    .profile-glow { 
-        width: 320px; 
-        height: 320px; 
+
+    .profile-glow {
+        width: 320px;
+        height: 320px;
     }
 }
 
 @media (max-width: 600px) {
-    .nav-links { 
-        display: none; 
+    .nav-links {
+        display: none;
     }
 }
 
@@ -625,7 +679,7 @@ section[id] {
     .status-dot {
         animation: none !important;
     }
-    
+
     html {
         scroll-behavior: auto;
     }
